@@ -1,7 +1,7 @@
 package yerim.Diary_Growing.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import yerim.Diary_Growing.domain.User;
+import yerim.Diary_Growing.domain.user.User;
 
 import java.util.Optional;
 

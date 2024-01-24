@@ -1,0 +1,15 @@
+#join-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 800px;
+}
+
+form {
+    width: 600px;
+    margin: 20px;
+    padding: 50px;
+    border: 2px solid lightblue;
+    border-radius: 20px;
+}

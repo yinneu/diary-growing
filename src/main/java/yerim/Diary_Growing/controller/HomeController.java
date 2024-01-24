@@ -13,11 +13,5 @@ public class HomeController {
         return "home";
     }
 
-    @GetMapping("/login")
-    @ResponseBody
-    public String Join(){
-        return "join";
-    }
-
 
 }

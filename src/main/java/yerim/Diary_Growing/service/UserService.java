@@ -3,8 +3,9 @@ package yerim.Diary_Growing.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import yerim.Diary_Growing.domain.User;
+import yerim.Diary_Growing.domain.user.User;
 import yerim.Diary_Growing.repository.UserRepository;
+import yerim.Diary_Growing.repository.UserSaveRequestDto;
 
 import java.util.Optional;
 
@@ -21,18 +22,17 @@ public class UserService {
 
     /**
      * 회원가입
-     * @param user
+     * @param useDto
      * @return
      */
-    public String Join(User user){
+    public String Join(UserSaveRequestDto useDto){
         // 같은 유저 id 중복 허용 x
-        validateDuplicateUser(user);
-        userRepository.save(user);
-        return user.getuId();
+        validateDuplicateUser(useDto);
+        return userRepository.save(useDto.toEntity()).getuId();
     }
 
-    private void validateDuplicateUser(User user) {
-        userRepository.findByuId(user.getuId())
+    private void validateDuplicateUser(UserSaveRequestDto useDto) {
+        userRepository.findByuId(useDto.getuId())
                 .ifPresent(m -> {
                     throw new IllegalStateException("이미 존재하는 아이디입니다.");
                 });
